@@ -1,55 +1,78 @@
-# IPL Exploratory Data Analysis (EDA)
 
-Welcome to the IPL Exploratory Data Analysis repository. This project dives into ball-by-ball data from the Indian Premier League (IPL) to uncover trends, team performances, and strategic insights[cite: 1].
+# IPL Exploratory Data Analysis
 
-## Dataset Overview
+## Overview
+This repository contains an in-depth Exploratory Data Analysis (EDA) of the Indian Premier League (IPL)[cite: 1]. Using ball-by-ball data, this project goes beyond traditional statistics to analyze the true impact of the toss and the critical phases of an IPL match. The analysis spans across 1,218 matches[cite: 1], providing a comprehensive look at what actually drives winning outcomes in T20 cricket.
 
-The analysis is built on a comprehensive dataset encompassing 1,218 matches and 289,673 individual deliveries, resulting in over 8.4 million data points[cite: 1].
+## Dataset
+* **Source:** Cricsheet IPL ball-by-ball dataset[cite: 1]
+* **Scope:** 1,218 IPL matches[cite: 1]
 
-### Data Preprocessing
+## Key Insights & Visualizations
 
-To ensure accuracy in the visualizations and aggregations, extensive data cleaning was performed[cite: 1]:
-
-- **Team Name Standardization**: Historical and inconsistent team names were updated to their current iterations (e.g., 'Delhi Daredevils' to 'Delhi Capitals', 'Kings XI Punjab' to 'Punjab Kings')[cite: 1].
-- **Venue Consolidation**: Inconsistent stadium names and cities were unified (e.g., merging various names for the M Chinnaswamy Stadium, Eden Gardens, and Rajiv Gandhi International Stadium)[cite: 1].
-- **Season Normalization**: Cross-year season formats like '2007/08' and '2020/21' were standardized to single years for cleaner time-series grouping[cite: 1].
-- **Missing Values**: Addressed null values in categories such as city, player of the match, and wicket details[cite: 1].
-
----
-
-## Visualizations & Key Insights
-
-### 1. The Impact of the Toss
-
-Does winning the toss actually win you the match? We analyzed the toss win rates and subsequent match outcomes across all franchises[cite: 1].
-
-- The data suggests that winning the toss barely matters on its own, but the decision made afterward is critical[cite: 1].
-- Historically, teams that choose to field after winning the toss experience a notably higher match win rate compared to those who choose to bat[cite: 1].
+### 1. The Toss Illusion: Does Winning the Toss Matter?
+A common narrative in T20 cricket is that winning the toss provides a massive advantage. The data tells a different story.
 
 ![Toss Analysis](toss.png)
 
-### 2. Match Phase Analysis
-
-Breaking down the game into distinct phases (such as the Powerplay, Middle Overs, and Death Overs) reveals how different teams approach pacing, run-accumulation, and wicket preservation.
-
-![Match Phase Analysis](phase_analysis.png)
-
-Further deep-dives into phase-specific metrics highlight the contrast in batting aggression and bowling economy as the innings progresses.
-
-![Match Phase Analysis 2](phase_analysis_2.png)
+* **Overall Impact:** Across 1218 matches, the team winning the toss wins the match only **50.5%** of the time[cite: 1]—essentially a coin flip.
+* **The Decision:** What you do after winning the toss matters more[cite: 1]. Teams choosing to field win at a higher rate (53.7%) compared to those choosing to bat (44.3%)[cite: 1].
+* **Team Efficiency:** Chennai Super Kings (CSK) capitalizes on winning the toss better than any other team, with a 60.0% win rate when the coin falls in their favor[cite: 1].
 
 ---
 
-## Tech Stack
+### 2. The Three-Act Breakdown: Which Phase Wins Matches?
+T20 innings can be broken down into three acts: Powerplay (Overs 0-5), Middle Overs (Overs 6-15), and Death Overs (Overs 16-19)[cite: 1].
 
-- **Language**: Python[cite: 1]
-- **Libraries**: Pandas, NumPy, Matplotlib, Seaborn[cite: 1]
+![Phase Analysis](phase_analysis.png)
+
+* **The Middle Over Dominance:** Dominating the middle overs yields the highest win probability (**54.8%**)[cite: 1]. It is also the phase most responsible for flipping the momentum if a team loses the powerplay, causing 55.9% of powerplay flips[cite: 1].
+* **The Collapse Effect:** Losing 3 or more wickets in *any* phase drastically kills your win probability, with a massive -24.2% drop in win chance if the collapse happens during the powerplay[cite: 1].
+
+---
+
+### 3. Building the Platform: The Anatomy of a Winning Innings
+While the death overs are where matches are finished, the platform must be built effectively. 
+
+![Phase Analysis 2](phase_analysis_2.png)
+
+* **Run Separation:** The middle overs are where winners separate themselves from losers the most in terms of average runs scored[cite: 1].
+* **Wicket Preservation:** Winning teams consistently protect their wickets better in the powerplay and middle overs (averaging only 1.1 and 2.2 wickets lost, respectively)[cite: 1]. 
+* **Death Over Acceleration:** Because winners protect their wickets early, they are able to accelerate much harder in the death overs, achieving an average run rate of **11.0** compared to the losers' 8.9[cite: 1].
 
 ## Getting Started
 
-1. Clone this repository to your local machine.
-2. Ensure you have the required libraries installed:
+### Prerequisites
+To run the analysis notebooks, you will need the following libraries:
+* Python 3.8+
+* Pandas[cite: 1]
+* Matplotlib[cite: 1]
+* Seaborn[cite: 1]
+* NumPy[cite: 1]
+
+### Installation
+1. Clone the repository:
+```bash
+   git clone [https://github.com/TechNas12/ipl_eda.git](https://github.com/TechNas12/ipl_eda.git)
+
+```
+
+2. Navigate to the project directory:
 
 ```bash
-   pip install pandas numpy matplotlib seaborn
+   cd ipl_eda
+
+```
+
+3. Install the required dependencies:
+
+```bash
+   pip install -r requirements.txt
+
+```
+
+*(Note: Ensure the Cricsheet dataset is downloaded and placed in the appropriate `data/` folder before running the notebooks.)*
+
+```
+
 ```
